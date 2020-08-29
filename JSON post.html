@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON post</title>
+</head>
+<body>
+    <a href="https://www.w3schools.com/jquery/jquery_ajax_get_post.asp">jquery ajax get and post</a>
+<input id='post-tittle' type="text" name="" placeholder="Post tittle" id="">
+<br>
+<br>
+<input id='post-content' type="text" name="" placeholder="post details" id="">
+<br><br>
+<button id='submit'>Submit</button>
+    <script>
+        document.getElementById('submit').addEventListener('click',function(){
+             const tittle=document.getElementById('post-tittle').value;
+             const content=document.getElementById('post-content').value;
+             const post={tittle:tittle,body:content}
+             newPostToServer(post)
+        })
+
+
+        // const postInfo={ title: 'foooooooooooo', body: 'barrrrrrrr', userId: 1}
+        function newPostToServer(postInfo){
+            fetch('https://jsonplaceholder.typicode.com/posts', {
+            method: 'POST',
+            body: JSON.stringify(postInfo),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+            })
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => alert('Please try again'))
+        }
+
+        ///promise emon ekta jinis ja ami kaouke kichu request korchi ami ta pabo ki pabo na amra je responspabo ki pabo 
+
+///JSON(),JSON.STRINGIFY(DATA)
+        // প্রতিশ্রুতি এমন একটি অবজেক্ট যা ভবিষ্যতে কিছু সময় একক মান উত্পাদন করতে পারে: হয় সমাধানিত মান, বা এটি সমাধান না হওয়ার কারণ (যেমন, কোনও নেটওয়ার্ক ত্রুটি ঘটেছে)। একটি প্রতিশ্রুতি 3 সম্ভাব্য অবস্থার মধ্যে একটিতে হতে পারে: পরিপূর্ণ, প্রত্যাখ্যাত বা মুলতুবি। প্রতিশ্রুতিবদ্ধ ব্যবহারকারীরা পূরণ হওয়া মান বা প্রত্যাখ্যানের কারণ পরিচালনা করতে কলব্যাকগুলি সংযুক্ত করতে পারে।
+// প্রতিশ্রুতি উত্সাহী, এর অর্থ প্রতিশ্রুতি দেয় যে প্রতিশ্রুতি দেওয়া প্রতিশ্রুতিবদ্ধ হওয়ার সাথে সাথে আপনি যে কোনও কাজই এটি দেবেন। আপনার যদি অলস প্রয়োজন হয় তবে পর্যবেক্ষণযোগ্য বা কার্যগুলি পরীক্ষা করে দেখুন।
+    </script>
+</body>
+</html>

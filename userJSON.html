@@ -1,0 +1,36 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>JSON practice</title>
+  </head>
+  <body>
+    <h1>JSON</h1>  
+    <h2>JavaScript  Obect Notaton</h2>
+    
+    <ul id="users-container">
+
+    </ul>
+
+    <script>
+      fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(json => displayUsers(json))
+
+
+      function displayUsers(user){
+        const userName=user.map(elem => elem.username);
+        const ul=document.getElementById('users-container');
+        for(let i=0; i<userName.length; i++){
+          const user=userName[i];
+          const li=document.createElement('li');
+          li.innerText=user;
+          ul.appendChild(li)
+        }
+      }
+    </script>
+
+
+  </body>
+  </html>
